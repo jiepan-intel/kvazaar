@@ -241,6 +241,10 @@ else()
     set_property( SOURCE ${LIB_SOURCES_STRATEGIES_SSE41} APPEND PROPERTY COMPILE_FLAGS "-msse4.1" )    
   endif()
   
+  #panjie
+set_property( SOURCE ${LIB_SOURCES_STRATEGIES_AVX2} APPEND PROPERTY COMPILE_FLAGS "-mavx -msimd128" )
+set_property( SOURCE ${LIB_SOURCES_STRATEGIES_SSE41} APPEND PROPERTY COMPILE_FLAGS "-msse4.1 -msimd128" )
+
   # CYGWIN, MSYS, and MINGW seem to be needing this but in some cases 
   # it might be that the toolset is not properly set, so also use this
   # in cases where we are not sure that it is not needed
