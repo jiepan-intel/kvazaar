@@ -11,6 +11,10 @@ target_include_directories(kvazaar_tests PUBLIC ${PROJECT_SOURCE_DIR}/src/extras
 
 add_definitions(-DKVZ_DLL_EXPORTS)
 
+#set(EMCC_LINKER_FLAGS "-s WASM=1  -s ENVIRONMENT=node,shell,web -s ALLOW_MEMORY_GROWTH=1 -s INITIAL_MEMORY=1gb -s MAXIMUM_MEMORY=4gb -v")
+
+set_target_properties(kvazaar_tests  PROPERTIES LINK_FLAGS "-s WASM=1 -O2 -g  -s ASSERTIONS=1 -s ENVIRONMENT=node,shell,web -s ALLOW_MEMORY_GROWTH=1 -s INITIAL_MEMORY=1gb -s MAXIMUM_MEMORY=4gb")
+
 if(BUILD_SHARED_LIBS)
   add_definitions(-DPIC)
 endif()
@@ -28,6 +32,9 @@ else()
   if(${CMAKE_SYSTEM_PROCESSOR} IN_LIST ALLOW_AVX2) 
     set_property( SOURCE ${TEST_SOURCES}  APPEND PROPERTY COMPILE_FLAGS "-mavx2 -mbmi -mpopcnt -mlzcnt -mbmi2" )
   endif()
+
+#set_property( SOURCE ${TEST_SOURCES}  APPEND PROPERTY COMPILE_FLAGS "-mavx -msimd128 -DCOMPILE_INTEL=1 -D__x86_64__" )
+    set_property( SOURCE ${TEST_SOURCES}  APPEND PROPERTY COMPILE_FLAGS "-DKVZ_DEBUG  -DDEBUG_STRATEGYSELECTOR  -mavx2 -msimd128  -g -DCOMPILE_INTEL=1 " )
 
   if(NOT ANDROID)
     find_package(Threads REQUIRED)

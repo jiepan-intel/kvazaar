@@ -242,8 +242,9 @@ else()
   endif()
   
   #panjie
-set_property( SOURCE ${LIB_SOURCES_STRATEGIES_AVX2} APPEND PROPERTY COMPILE_FLAGS "-mavx -msimd128" )
-set_property( SOURCE ${LIB_SOURCES_STRATEGIES_SSE41} APPEND PROPERTY COMPILE_FLAGS "-msse4.1 -msimd128" )
+#set_property( SOURCE ${LIB_SOURCES_STRATEGIES_AVX2} APPEND PROPERTY COMPILE_FLAGS "-msimd128 -mavx2" )
+#set_property( SOURCE ${LIB_SOURCES_STRATEGIES_SSE41} APPEND PROPERTY COMPILE_FLAGS "-msimd128 -msse4.1" )
+target_compile_options(kvazaar PRIVATE -msimd128 -mavx2 -g -DDEBUG_STRATEGYSELECTOR)
 
   # CYGWIN, MSYS, and MINGW seem to be needing this but in some cases 
   # it might be that the toolset is not properly set, so also use this
@@ -276,6 +277,7 @@ set_property( SOURCE ${LIB_SOURCES_STRATEGIES_SSE41} APPEND PROPERTY COMPILE_FLA
 endif()
 
 
+set_target_properties(kvazaar-bin  PROPERTIES LINK_FLAGS "-s WASM=1 -O2 -g  -s ASSERTIONS=1 -s ENVIRONMENT=node,shell,web -s ALLOW_MEMORY_GROWTH=1 -s INITIAL_MEMORY=1gb -s MAXIMUM_MEMORY=4gb")
 # Source grouping
 
 # Some basic structuring of the files based on previous visual studio project files
