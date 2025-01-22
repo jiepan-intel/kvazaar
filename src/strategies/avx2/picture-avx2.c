@@ -44,7 +44,7 @@
 
 #include <immintrin.h>
 #include <emmintrin.h>
-#include <mmintrin.h>
+//#include <mmintrin.h>
 #include <xmmintrin.h>
 #include <string.h>
 #include "strategies/strategies-picture.h"
@@ -65,6 +65,12 @@
  *
  * \returns Sum of Absolute Differences
  */
+static __inline__ int
+_mm_popcnt_u32(unsigned int __A)
+{
+  return __builtin_popcount(__A);
+}
+
 uint32_t kvz_reg_sad_avx2(const uint8_t * const data1, const uint8_t * const data2,
                           const int width, const int height, const unsigned stride1, const unsigned stride2)
 {
