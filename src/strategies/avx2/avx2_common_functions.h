@@ -151,12 +151,17 @@ static INLINE void scanord_read_vector(const int16_t **__restrict coeffs, const 
 }
 
 static inline int32_t _tzcnt_u32(uint32_t x) {
+#if 0
+    //BUG, infinit loop if x == 0
     int count = 0;
     while ((x & 1) == 0) {
         x >>= 1;
         count++;
     }
     return count;
+#else
+   return __builtin_ctz(x);
+#endif
 }
 
 static inline int32_t _lzcnt_u32(uint32_t x) {
