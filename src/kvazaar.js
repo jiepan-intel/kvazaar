@@ -143,6 +143,80 @@ Module["expectedDataFileDownloads"]++;
       }
     }, handleError);
     function runWithFS(Module) {
+
+        /*
+        //OK
+        ENV.KVAZAAR_OVERRIDE_array_checksum = "generic";
+        ENV.KVAZAAR_OVERRIDE_array_md5 = "generic";
+        ENV.KVAZAAR_OVERRIDE_reg_sad = "generic";
+        ENV.KVAZAAR_OVERRIDE_sad_4x4 = "generic";
+        ENV.KVAZAAR_OVERRIDE_sad_8x8 = "generic";
+        ENV.KVAZAAR_OVERRIDE_sad_16x16 = "generic";
+        ENV.KVAZAAR_OVERRIDE_sad_32x32 = "generic";
+        ENV.KVAZAAR_OVERRIDE_sad_64x64 = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_4x4 = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_8x8 = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_16x16 = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_32x32 = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_64x64 = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_any_size = "generic";
+        ENV.KVAZAAR_OVERRIDE_sad_4x4_dual = "generic";
+        ENV.KVAZAAR_OVERRIDE_sad_8x8_dual = "generic";
+        ENV.KVAZAAR_OVERRIDE_sad_16x16_dual = "generic";
+        ENV.KVAZAAR_OVERRIDE_sad_32x32_dual = "generic";
+        ENV.KVAZAAR_OVERRIDE_sad_64x64_dual = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_4x4_dual = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_8x8_dual = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_16x16_dual = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_32x32_dual = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_64x64_dual = "generic";
+        ENV.KVAZAAR_OVERRIDE_satd_any_size_quad = "generic";
+        ENV.KVAZAAR_OVERRIDE_pixels_calc_ssd = "generic";
+        ENV.KVAZAAR_OVERRIDE_bipred_average = "generic";
+        ENV.KVAZAAR_OVERRIDE_get_optimized_sad = "generic";
+        ENV.KVAZAAR_OVERRIDE_ver_sad = "generic";
+        ENV.KVAZAAR_OVERRIDE_hor_sad = "generic";
+        ENV.KVAZAAR_OVERRIDE_pixel_var = "generic";
+        ENV.KVAZAAR_OVERRIDE_fast_forward_dst_4x4 = "generic";
+        ENV.KVAZAAR_OVERRIDE_dct_4x4 = "generic";
+        ENV.KVAZAAR_OVERRIDE_dct_8x8 = "generic";
+        ENV.KVAZAAR_OVERRIDE_dct_16x16 = "generic";
+        ENV.KVAZAAR_OVERRIDE_dct_32x32 = "generic";
+        ENV.KVAZAAR_OVERRIDE_fast_inverse_dst_4x4 = "generic";
+        ENV.KVAZAAR_OVERRIDE_idct_4x4 = "generic";
+        ENV.KVAZAAR_OVERRIDE_idct_8x8 = "generic";
+        ENV.KVAZAAR_OVERRIDE_idct_16x16 = "generic";
+        ENV.KVAZAAR_OVERRIDE_idct_32x32 = "generic";
+        ENV.KVAZAAR_OVERRIDE_filter_hpel_blocks_hor_ver_luma = "generic";
+        ENV.KVAZAAR_OVERRIDE_filter_hpel_blocks_diag_luma = "generic";
+        ENV.KVAZAAR_OVERRIDE_filter_qpel_blocks_hor_ver_luma = "generic";
+        ENV.KVAZAAR_OVERRIDE_filter_qpel_blocks_diag_luma = "generic";
+        ENV.KVAZAAR_OVERRIDE_sample_quarterpel_luma = "generic";
+        ENV.KVAZAAR_OVERRIDE_sample_octpel_chroma = "generic";
+        ENV.KVAZAAR_OVERRIDE_sample_quarterpel_luma_hi = "generic";
+        ENV.KVAZAAR_OVERRIDE_sample_octpel_chroma_hi = "generic";
+        ENV.KVAZAAR_OVERRIDE_get_extended_block = "generic";
+        ENV.KVAZAAR_OVERRIDE_quant = "generic";
+        ENV.KVAZAAR_OVERRIDE_quantize_residual = "generic";
+        ENV.KVAZAAR_OVERRIDE_dequant = "generic";
+        ENV.KVAZAAR_OVERRIDE_coeff_abs_sum = "generic";
+        ENV.KVAZAAR_OVERRIDE_fast_coeff_cost = "generic";
+        ENV.KVAZAAR_OVERRIDE_find_last_scanpos = "generic";
+        ENV.KVAZAAR_OVERRIDE_angular_pred = "generic";
+        ENV.KVAZAAR_OVERRIDE_intra_pred_planar = "generic";
+        ENV.KVAZAAR_OVERRIDE_intra_pred_filtered_dc = "generic";
+        ENV.KVAZAAR_OVERRIDE_sao_edge_ddistortion = "generic";
+        ENV.KVAZAAR_OVERRIDE_calc_sao_edge_dir = "generic";
+        ENV.KVAZAAR_OVERRIDE_sao_reconstruct_color = "generic";
+        ENV.KVAZAAR_OVERRIDE_sao_band_ddistortion = "generic";
+       */
+
+        //problem
+        ENV.KVAZAAR_OVERRIDE_encode_coeff_nxn = "generic";
+
+
+
+
       function assert(check, msg) {
         if (!check) throw msg + (new Error).stack;
       }
