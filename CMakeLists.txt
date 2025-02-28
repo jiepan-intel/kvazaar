@@ -244,8 +244,16 @@ else()
   #panjie
   #set_property( SOURCE ${LIB_SOURCES_STRATEGIES_AVX2} APPEND PROPERTY COMPILE_FLAGS "-msimd128 -mavx2" )
   #set_property( SOURCE ${LIB_SOURCES_STRATEGIES_SSE41} APPEND PROPERTY COMPILE_FLAGS "-msimd128 -msse4.1" )
-  target_compile_options(kvazaar PRIVATE -msimd128 -mavx2 -g -DDEBUG_STRATEGYSELECTOR -pthread -DX86_64 -DCOMPILE_INTEL=1)
-  target_compile_options(kvazaar-bin PRIVATE -msimd128 -mavx2 -g -DDEBUG_STRATEGYSELECTOR -pthread -DX86_64 -DCOMPILE_INTEL=1)
+
+#Scalar
+#target_compile_options(kvazaar PRIVATE  -g -DDEBUG_STRATEGYSELECTOR -pthread -DX86_64 -DCOMPILE_INTEL=1)
+#target_compile_options(kvazaar-bin PRIVATE  -g -DDEBUG_STRATEGYSELECTOR -pthread -DX86_64 -DCOMPILE_INTEL=1)
+#SIMD SSE
+#target_compile_options(kvazaar PRIVATE -msimd128 -msse4.1 -g -DDEBUG_STRATEGYSELECTOR -pthread -DX86_64 -DCOMPILE_INTEL=1)
+#target_compile_options(kvazaar-bin PRIVATE -msimd128 -msse4.1 -g -DDEBUG_STRATEGYSELECTOR -pthread -DX86_64 -DCOMPILE_INTEL=1)
+#SIMD AVX
+target_compile_options(kvazaar PRIVATE -msimd128 -mavx2 -g -DDEBUG_STRATEGYSELECTOR -pthread -DX86_64 -DCOMPILE_INTEL=1)
+target_compile_options(kvazaar-bin PRIVATE -msimd128 -mavx2 -g -DDEBUG_STRATEGYSELECTOR -pthread -DX86_64 -DCOMPILE_INTEL=1)
 
   # CYGWIN, MSYS, and MINGW seem to be needing this but in some cases 
   # it might be that the toolset is not properly set, so also use this
