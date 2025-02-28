@@ -150,6 +150,30 @@ static INLINE void scanord_read_vector(const int16_t **__restrict coeffs, const 
   }
 }
 
+static inline int32_t _tzcnt_u32(uint32_t x) {
+    int count = 0;
+    while ((x & 1) == 0) {
+        x >>= 1;
+        count++;
+    }
+    return count;
+}
+
+static inline int32_t _lzcnt_u32(uint32_t x) {
+    return __builtin_clz(x);
+}
+
+static inline int32_t _bzhi_u32 (unsigned int __X, unsigned int __Y)
+{
+  return ((__X << (32 - __Y)) >> (32 - __Y));
+}
+
+static inline __inline__ int
+_mm_popcnt_u32(unsigned int __A)
+{
+  return __builtin_popcount(__A);
+}
+
 // If ints is completely zero, returns 16 in *first and -1 in *last
 static INLINE void get_first_last_nz_int16(__m256i ints, int32_t *first, int32_t *last)
 {
