@@ -340,7 +340,8 @@ static void* strategyselector_choose_for(const strategy_list_t * const strategie
   return strategies->strategies[max_priority_i].fptr;
 }
 
-#if COMPILE_INTEL
+//#if COMPILE_INTEL
+#if 0
 
 typedef struct {
   unsigned int eax;
@@ -452,7 +453,8 @@ static int altivec_available(void)
 static void set_hardware_flags(int32_t cpuid, uint8_t logging) {
   FILL(kvz_g_hardware_flags, 0);
 
-#if COMPILE_INTEL
+//#if COMPILE_INTEL
+#if 0
   if (cpuid) {
     cpuid_t cpuid1 = { 0, 0, 0, 0 };
     /* CPU feature bits */
@@ -592,6 +594,38 @@ static void set_hardware_flags(int32_t cpuid, uint8_t logging) {
     if (kvz_g_hardware_flags.powerpc_flags.altivec) fprintf(stderr, " AltiVec");
     fprintf(stderr, "\n");
   }
+#endif
+
+#if  defined(__EMSCRIPTEN__)
+
+    fprintf(stderr, "set hardware flags for emsdk\n");
+    kvz_g_hardware_flags.logical_cpu_count = 1;
+    kvz_g_hardware_flags.physical_cpu_count = kvz_g_hardware_flags.logical_cpu_count;
+    kvz_g_hardware_flags.intel_flags.hyper_threading = 0;
+
+
+    kvz_g_hardware_flags.intel_flags.mmx = 1;
+    kvz_g_hardware_flags.intel_flags.sse = 1;
+    kvz_g_hardware_flags.intel_flags.sse2 = 1;
+
+    kvz_g_hardware_flags.intel_flags.sse3 = 1;;
+    kvz_g_hardware_flags.intel_flags.ssse3 = 1;
+    kvz_g_hardware_flags.intel_flags.sse41 = 1;
+    kvz_g_hardware_flags.intel_flags.sse42 = 1;
+    kvz_g_hardware_flags.intel_flags.avx = 1;
+    kvz_g_hardware_flags.intel_flags.avx2 = 1;
+    fprintf(stderr, "\nDetected: INTEL, flags:");
+    if (kvz_g_hardware_flags.intel_flags.mmx) fprintf(stderr, " MMX");
+    if (kvz_g_hardware_flags.intel_flags.sse) fprintf(stderr, " SSE");
+    if (kvz_g_hardware_flags.intel_flags.sse2) fprintf(stderr, " SSE2");
+    if (kvz_g_hardware_flags.intel_flags.sse3) fprintf(stderr, " SSE3");
+    if (kvz_g_hardware_flags.intel_flags.ssse3) fprintf(stderr, " SSSE3");
+    if (kvz_g_hardware_flags.intel_flags.sse41) fprintf(stderr, " SSE41");
+    if (kvz_g_hardware_flags.intel_flags.sse42) fprintf(stderr, " SSE42");
+    if (kvz_g_hardware_flags.intel_flags.avx) fprintf(stderr, " AVX");
+    if (kvz_g_hardware_flags.intel_flags.avx2) fprintf(stderr, " AVX2");
+    fprintf(stderr, "\n");
+
 #endif
   
 }
