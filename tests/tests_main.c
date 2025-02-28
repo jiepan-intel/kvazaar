@@ -63,6 +63,8 @@ int main(int argc, char **argv)
   {
     RUN_SUITE(speed_tests);
   }
+
+    RUN_SUITE(speed_tests);
 #else
   printf("10-bit tests are not yet supported\n");
 #endif //KVZ_BIT_DEPTH == 8
