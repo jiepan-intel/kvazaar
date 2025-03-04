@@ -7,10 +7,27 @@ OPT_FLAG=" --turboshaft_wasm  --turboshaft_wasm_instruction_selection_experiment
 
 
 #cd src
-(cd src; ${NODE} ${ORG_FLAG} ./kvazaar.js   -i ../asset_dir/waterfall_cif.yuv --input-res 352x288  -o watfall.hevc --threads 4)
-(cd src; ${NODE} ${OPT_FLAG} ./kvazaar.js   -i ../asset_dir/waterfall_cif.yuv --input-res 352x288  -o watfall.hevc --threads 4)
-#(cd src; node ./kvazaar.js   -i ../asset_dir/waterfall_cif.yuv --input-res 352x288  -o watfall.hevc )
-#exit
+#(cd src; ${NODE} ${ORG_FLAG} ./kvazaar.js   -i ../asset_dir/waterfall_cif.yuv --input-res 352x288  -o watfall.hevc --enable-logging --threads 1)
+#echo -e "\n----revec----"
+#(cd src; ${NODE} ${OPT_FLAG} ./kvazaar.js   -i ../asset_dir/waterfall_cif.yuv --input-res 352x288  -o watfall.hevc --enable-logging --threads 1)
+
+
+#for yuvfile in PeopleOnStreet_2560x1600_30_crop_qp22.bin  Traffic_2560x1600_30_crop_qp22.bin
+#do
+#    echo -e "\n----------${yuvfile}-------------"
+#    (cd src; ${NODE} ${ORG_FLAG} ./kvazaar.js   -i ../asset_dir/${yuvfile}  --input-res 2560x1600  -o ${yuvfile}.hevc --enable-logging --threads 1)
+#    echo -e "\n----revec----"
+#    (cd src; ${NODE} ${OPT_FLAG} ./kvazaar.js   -i ../asset_dir/${yuvfile}  --input-res 2560x1600  -o ${yuvfile}.hevc --enable-logging --threads 1)
+#done
+
+
+for yuvfile in BasketballPass_416x240_50_qp22.bin  BlowingBubbles_416x240_50_qp22.bin  BQSquare_416x240_60_qp22.bin    RaceHorses_416x240_30_qp22.bin
+do
+    echo -e "\n----------${yuvfile}-------------"
+    (cd src; ${NODE} ${ORG_FLAG} ./kvazaar.js   -i ../asset_dir/${yuvfile}  --input-res 416x240  -o ${yuvfile}.hevc --enable-logging --threads 1)
+    echo -e "\n----revec----"
+    (cd src; ${NODE} ${OPT_FLAG} ./kvazaar.js   -i ../asset_dir/${yuvfile}  --input-res 416x240  -o ${yuvfile}.hevc --enable-logging --threads 1)
+done
 
 
 #(cd  build/tests ; node  /home/panjie/apx/work/kvazaar/build/tests/kvazaar_tests.js -v )
